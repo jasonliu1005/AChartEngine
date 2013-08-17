@@ -16,6 +16,7 @@
 package org.achartengine.renderer;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,8 +56,13 @@ public class XYSeriesRenderer extends SimpleSeriesRenderer {
   private Align mAnnotationsTextAlign = Align.CENTER;
   /** The annotations color. */
   private int mAnnotationsColor = DefaultRenderer.TEXT_COLOR;
+    private int mChartValuesTextColor = getColor();
+    private int mChartValuesTextAngle = 0;
+    private boolean mShowChartPositionText = false;
+    private int mChartPositionTextColor = getColor();
+    private NumberFormat mChartPositionTextFormat;
 
-  /**
+    /**
    * A descriptor for the line fill behavior.
    */
   public static class FillOutsideLine implements Serializable {
@@ -355,7 +361,47 @@ public class XYSeriesRenderer extends SimpleSeriesRenderer {
     mChartValuesSpacing = spacing;
   }
 
-  /**
+    public void setChartValuesTextColor(int color) {
+        mChartValuesTextColor = color;
+    }
+
+    public int getChartValuesTextColor() {
+        return mChartValuesTextColor;
+    }
+
+    public void setChartValuesTextAngle(int angle) {
+        mChartValuesTextAngle = angle;
+    }
+
+    public int getChartValuesTextAngle() {
+        return mChartValuesTextAngle;
+    }
+
+    public void setShowChartPositionText (boolean show) {
+        mShowChartPositionText = show;
+    }
+
+    public boolean getShowChartPositionText () {
+        return mShowChartPositionText;
+    }
+
+    public void setChartPositionTextColor(int color) {
+        mChartPositionTextColor = color;
+    }
+
+    public int getChartPositionTextColor() {
+        return mChartPositionTextColor;
+    }
+
+    public void setChartPositionTextFormat(NumberFormat format) {
+        mChartPositionTextFormat = format;
+    }
+
+    public NumberFormat getChartPositionTextFormat() {
+        return mChartPositionTextFormat;
+    }
+
+    /**
    * Returns the annotations text size.
    * 
    * @return the annotations text size

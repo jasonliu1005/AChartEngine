@@ -118,6 +118,7 @@ public class XYChartBuilderBackup extends Activity {
         // set some renderer properties
         renderer.setPointStyle(PointStyle.CIRCLE);
         renderer.setFillPoints(true);
+
         renderer.setDisplayChartValues(true);
         renderer.setDisplayChartValuesDistance(10);
         mCurrentRenderer = renderer;
@@ -178,7 +179,7 @@ public class XYChartBuilderBackup extends Activity {
   protected void onResume() {
     super.onResume();
     if (mChartView == null) {
-      LinearLayout layout = (LinearLayout) findViewById(R.id.chart);
+      LinearLayout layout = (LinearLayout) findViewById(R.id.chart);1
       // mChartView = ChartFactory.getLineChartView(this, mDataset, mRenderer);
       // mChartView = ChartFactory.getBarChartView(this, mDataset, mRenderer,
       // Type.DEFAULT);

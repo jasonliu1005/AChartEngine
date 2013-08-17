@@ -544,7 +544,7 @@ public abstract class XYChart extends AbstractChart {
     }
     if (seriesRenderer.isDisplayChartValues()) {
       paint.setTextAlign(seriesRenderer.getChartValuesTextAlign());
-      drawChartValuesText(canvas, series, seriesRenderer, paint, pointsList, seriesIndex,
+      drawChartValuesText(canvas, series, seriesRenderer, paint, pointsList, yAxisValue, seriesIndex,
           startIndex);
     }
     if (stroke != null) {
@@ -573,7 +573,7 @@ public abstract class XYChart extends AbstractChart {
    * @param startIndex the start index of the rendering points
    */
   protected void drawChartValuesText(Canvas canvas, XYSeries series, XYSeriesRenderer renderer,
-      Paint paint, List<Float> points, int seriesIndex, int startIndex) {
+      Paint paint, List<Float> points, float yAxisValue, int seriesIndex, int startIndex) {
     if (points.size() > 1) { // there are more than one point
       // record the first point's position
       float previousPointX = points.get(0);

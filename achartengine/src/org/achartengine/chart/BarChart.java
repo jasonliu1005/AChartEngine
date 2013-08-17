@@ -235,10 +235,12 @@ public class BarChart extends XYChart {
    * @param startIndex the start index of the rendering points
    */
   protected void drawChartValuesText(Canvas canvas, XYSeries series, XYSeriesRenderer renderer,
-      Paint paint, List<Float> points, int seriesIndex, int startIndex) {
+      Paint paint, List<Float> points, float yAxisValue, int seriesIndex, int startIndex) {
     int seriesNr = mDataset.getSeriesCount();
     int length = points.size();
     float halfDiffX = getHalfDiffX(points, length, seriesNr);
+    paint.setColor(renderer.getChartValuesTextColor());
+    paint.setTextSize(2 * halfDiffX);
     for (int i = 0; i < length; i += 2) {
       int index = startIndex + i / 2;
       double value = series.getY(index);
@@ -249,10 +251,19 @@ public class BarChart extends XYChart {
         }
         if (value >= 0) {
           drawText(canvas, getLabel(renderer.getChartValuesFormat(), value), x, points.get(i + 1)
-              - renderer.getChartValuesSpacing(), paint, 0);
+              - renderer.getChartValuesSpacing(), paint, renderer.getChartValuesTextAngle());
         } else {
           drawText(canvas, getLabel(renderer.getChartValuesFormat(), value), x, points.get(i + 1)
-              + renderer.getChartValuesTextSize() + renderer.getChartValuesSpacing() - 3, paint, 0);
+              + renderer.getChartValuesTextSize() + renderer.getChartValuesSpacing() - 3,
+                  paint, renderer.getChartValuesTextAngle());
+        }
+
+        if (renderer.getShowChartPositionText()) {
+            paint.setColor(renderer.getChartPositionTextColor());
+            drawText(canvas, getLabel(renderer.getChartPositionTextFormat(), series.getX(index)),
+                    x, yAxisValue, paint, renderer.getChartValuesTextAngle());
+            paint.setColor(renderer.getChartValuesTextColor());
+
         }
       }
     }

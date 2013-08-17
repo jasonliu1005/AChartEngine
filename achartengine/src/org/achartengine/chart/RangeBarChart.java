@@ -99,7 +99,7 @@ public class RangeBarChart extends BarChart {
    * @param startIndex the start index of the rendering points
    */
   protected void drawChartValuesText(Canvas canvas, XYSeries series, XYSeriesRenderer renderer,
-      Paint paint, List<Float> points, int seriesIndex, int startIndex) {
+      Paint paint, List<Float> points, float yAxisValue, int seriesIndex, int startIndex) {
     int seriesNr = mDataset.getSeriesCount();
     float halfDiffX = getHalfDiffX(points, points.size(), seriesNr);
     int start = 0;
